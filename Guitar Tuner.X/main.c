@@ -1,6 +1,6 @@
 /*
  * File:   main.c
- * Author: jeffi
+ * Author: N/A
  *
  * Created on October 13, 2026, 3:22 PM
  */

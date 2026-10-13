@@ -1,6 +1,6 @@
 /*
  * File:   adc_dsp.c
- * Author: jeffi
+ * Author: N/A
  *
  * Created on October 13, 2026, 3:23 PM
  */
