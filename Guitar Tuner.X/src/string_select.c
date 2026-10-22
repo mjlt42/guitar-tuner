@@ -1,11 +1,11 @@
 /*
  * File:   string_select.c
- * Author: Justin ANdreotti
+ * Author: Justin Andreotti
  *
  * Created on October 13, 2026, 3:22 PM
  */
 
-
+//check
 #include <xc.h>
 
 void main(void) {
