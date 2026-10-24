@@ -8,75 +8,53 @@
 //check
 #include <xc.h>
 
-void main(void) {
+typedef enum {
+    ELow,
+    A,
+    D,
+    G,
+    B,
+    EHigh
+} TrafficState;
+
+typedef enum {
+    NEXT,
+    PREVIOUS
+} Direction;
+
+#define NUM_STATES 6
+
+static void change_state(TrafficState *current, Direction direction)
+{
+    if (direction == NEXT)
+    {
+        *current = (TrafficState)((*current + 1) % NUM_STATES);
+    }
+    else if (direction == PREVIOUS)
+    {
+        if (*current == ELow)
+            *current = EHigh;
+        else
+            *current = (TrafficState)(*current - 1);
+    }
+}
+
+
+void main(void)
+{
     init();
 
     TrafficState state = ELow;
 
     while (1)
     {
-	switch (state)
+        if (PORTDbits.RD6 == 0)
         {
-            case ELow:
-    
-                if (PORTDbits.RD6 == 0){
-                state = A;
-              
-                }else if (PORTDbits.RD7 == 0){
-                state = EHigh;
-                 } 
-                Break;
-
-            case A:
-                
-                if (PORTDbits.RD6 == 0){
-                state = D;
-              
-                }else if (PORTDbits.RD7 == 0){
-                state = ELow;
-                } 
-                Break;
-
-            case D:
-                
-                if (PORTDbits.RD6 == 0){
-                state = G;
-              
-                }else if (PORTDbits.RD7 == 0){
-                state = A;
-                } 
-                Break;
-
-            case G:
-                
-                if (PORTDbits.RD6 == 0){
-                state = B;
-              
-                }else if (PORTDbits.RD7 == 0){
-                state = D;
-                } 
-                Break;
-
-            case B:
-
-                if (PORTDbits.RD6 == 0){
-                state = EHigh;
-              
-                }else if (PORTDbits.RD7 == 0){
-                state = G;
-                } 
-                Break;
-
-            case EHigh:
-                
-                if (PORTDbits.RD6 == 0){
-                state = ELow;
-              
-                }else if (PORTDbits.RD7 == 0){
-                state = B;
-                } 
-                Break;
+            change_state(&state, NEXT);
         }
-	}
-
+        else if (PORTDbits.RD7 == 0)
+        {
+            change_state(&state, PREVIOUS);
+        }
+    }
 }
