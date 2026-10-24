@@ -418,8 +418,7 @@ void LCD_write_variable(int32_t variable, uint8_t left_offset){
         for(uint8_t i = 1 ; i < digits ; i++){       //Shift the temporary variable *digits* times
             temp_variable /= 10;                     //...
         }                                            //...
-        LCD_write_data( (temp_variable%10) + '0' );  //Write the digit(with character 0 as offset)
-        digits --;                                   //Decrement the *digits*(to move onto next)
+LCD_write_data((char)((temp_variable % 10) + '0'));        digits --;                                   //Decrement the *digits*(to move onto next)
         if(digits == 0) break;                       //If *digits* reaches 0, break
     }
 }

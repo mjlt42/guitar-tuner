@@ -4,6 +4,7 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>inc/display.h</itemPath>
       <itemPath>inc/adc_dsp.h</itemPath>
       <itemPath>inc/Configuration.h</itemPath>
       <itemPath>inc/LCD.h</itemPath>
@@ -24,6 +25,7 @@
                    projectFiles="true">
       <itemPath>src/adc_dsp.c</itemPath>
       <itemPath>src/LCD.c</itemPath>
+      <itemPath>src/display.c</itemPath>
       <itemPath>src/main.c</itemPath>
       <itemPath>src/string_select.c</itemPath>
       <itemPath>src/tuner_control.c</itemPath>
