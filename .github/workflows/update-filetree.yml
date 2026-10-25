@@ -1,0 +1,91 @@
+name: Update README file tree
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - "README.md"
+      - ".github/**"
+  workflow_dispatch:
+
+jobs:
+  update-filetree:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Generate file tree
+        run: |
+          python3 - <<'PY'
+          import pathlib
+          import re
+
+          root = pathlib.Path(".")
+          repo_name = root.name
+          ignore = {".git", ".github", ".idea", "__pycache__", ".venv", "venv", "node_modules"}
+
+          def build_tree(path: pathlib.Path, prefix: str = ""):
+              entries = []
+              children = sorted(
+                  p for p in path.iterdir()
+                  if p.name not in ignore and p.name != "README.md"
+              )
+
+              for i, child in enumerate(children):
+                  is_last = i == len(children) - 1
+                  connector = "└── " if is_last else "├── "
+                  entries.append(f"{prefix}{connector}{child.name}{'/' if child.is_dir() else ''}")
+
+                  if child.is_dir():
+                      child_prefix = prefix + ("    " if is_last else "│   ")
+                      entries.extend(build_tree(child, child_prefix))
+              return entries
+
+          tree_lines = [f"{repo_name}/"]
+          tree_lines.extend(build_tree(root))
+          tree_text = "\n".join(tree_lines) + "\n"
+
+          readme = root / "README.md"
+          content = readme.read_text(encoding="utf-8")
+
+          replacement = (
+              "<!-- FILETREE:START -->\n"
+              "```text\n"
+              f"{tree_text}"
+              "```\n"
+              "<!-- FILETREE:END -->"
+          )
+
+          if "<!-- FILETREE:START -->" in content and "<!-- FILETREE:END -->" in content:
+              updated = re.sub(
+                  r"<!-- FILETREE:START -->.*?<!-- FILETREE:END -->",
+                  replacement,
+                  content,
+                  flags=re.S,
+              )
+          else:
+              updated = content.rstrip() + "\n\n" + replacement + "\n"
+
+          readme.write_text(updated, encoding="utf-8")
+          PY
+
+      - name: Commit README update
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          if git diff --quiet README.md; then
+            echo "README already up to date."
+            exit 0
+          fi
+
+          git add README.md
+          git commit -m "Update README file tree"
+          git push
