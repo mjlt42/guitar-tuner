@@ -26,7 +26,7 @@ typedef enum {
     G,
     B,
     EHigh
-} TrafficState;
+} String;
 
 typedef enum {
     NEXT,
@@ -35,16 +35,16 @@ typedef enum {
 
 #define NUM_STATES 6
 
-static void change_state(TrafficState *current, Direction direction){
+static void change_state(String *current, Direction direction){
     if (direction == NEXT){
-        *current = (TrafficState)((*current + 1) % NUM_STATES);
+        *current = (String)((*current + 1) % NUM_STATES);
     }
     else if (direction == PREV)
     {
         if (*current == ELow)
             *current = EHigh;
         else
-            *current = (TrafficState)(*current - 1);
+            *current = (String)(*current - 1);
     }
 }
 
@@ -52,7 +52,7 @@ static void change_state(TrafficState *current, Direction direction){
 void main(void){
     init();
 
-    TrafficState state = ELow;
+    String state = ELow;
 
     while (1)
     {
