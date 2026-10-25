@@ -26,6 +26,5 @@ Repository used to store the files for our ECE 3301 Project
 │       ├── string_select.c
 │       └── tuner_control.c
 └── Schematics/
-    └── dfdf.txt
 ```
 <!-- FILETREE:END -->
