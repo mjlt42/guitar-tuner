@@ -26,13 +26,10 @@ Repository used to store the files for our ECE 3301 Project
 │       ├── string_select.c
 │       └── tuner_control.c
 └── Schematics/
-    ├── Audio_Amplifier_Schematic.png
-    ├── LCD_Schematic.png
-    └── PIC18F46K22_Schematic.png
 ```
 <!-- FILETREE:END -->
 
 ## Schematics
-![alt text](Schematics/LCD_Schematic.png)
+![alt text](Schematics/PIC18F46K22_Schematic.png)
 ![alt text](Schematics/LCD_Schematic.png)
 ![alt text](Schematics/Audio_Amplifier_Schematic.png)
