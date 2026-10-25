@@ -35,17 +35,19 @@ typedef enum {
 
 #define NUM_STATES 6
 
-static void change_state(String *current, Direction direction){
+static String change_state(Direction direction){
+    static String current = ELow;
     if (direction == NEXT){
-        *current = (String)((*current + 1) % NUM_STATES);
+        current = (String)((current + 1) % NUM_STATES);
     }
     else if (direction == PREV)
     {
-        if (*current == ELow)
-            *current = EHigh;
+        if (current == ELow)
+            current = EHigh;
         else
-            *current = (String)(*current - 1);
+            current = (String)(current - 1);
     }
+    return current;
 }
 
 
