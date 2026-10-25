@@ -1,15 +1,16 @@
 /*
  * File:   adc_dsp.c
- * Author: N/A
+ * Author: Matthew Lopez Tarsky
  *
  * Created on October 13, 2026, 3:23 PM
  */
 
+#include "adc_dsp.h"
+#include <stdio.h>
+#include <stdint.h>
 
-#include <avr/io.h>
-
-int main(void) {
-    /* Replace with your application code */
-    while (1) {
+static void DigitalToVoltage(uint16_t adcSampleSet[], uint8_t size){
+    for (int i = 0; i < size; i++){
+        adcSampleSet[i] = (uint16_t)(((float)adcSampleSet[i] /  ADC_MAX) * VREF);
     }
 }
