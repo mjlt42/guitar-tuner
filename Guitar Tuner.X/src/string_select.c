@@ -15,7 +15,7 @@ static void init(void){
     OSCCON |= (0x1 << 1); //selects internal oscillator block
     
     ANSELD = 0x00;              // PORTD digital
-    TRISD = 0xC0;               // RD7 and RD6 inputs; RD0-RD5 outputs
+    TRISD = 0x03;               // RD7 and RD6 inputs; RD0-RD5 outputs
     LATD  = 0x00;               // Clear output latches
 }
 
@@ -35,16 +35,16 @@ typedef enum {
 
 #define NUM_STATES 6
 
-static void change_state(TrafficState *current, Direction direction){
+static TrafficState change_state(TrafficState current, Direction direction){
     if (direction == NEXT){
-        *current = (TrafficState)((*current + 1) % NUM_STATES);
+        return (TrafficState)((current + 1) % NUM_STATES);
     }
     else if (direction == PREV)
     {
-        if (*current == ELow)
-            *current = EHigh;
+        if (current == ELow)
+            return EHigh;
         else
-            *current = (TrafficState)(*current - 1);
+            return (TrafficState)(current - 1);
     }
 }
 
@@ -56,11 +56,11 @@ void main(void){
 
     while (1)
     {
-        if (PORTDbits.RD6 == 0){
-            change_state(&state, NEXT);
+        if (PORTDbits.RD0 == 0){
+            state = change_state(state, NEXT);
         }
-        else if (PORTDbits.RD7 == 0){
-            change_state(&state, PREV);
+        else if (PORTDbits.RD1 == 0){
+            state = change_state(state, PREV);
         }
     }
 }
