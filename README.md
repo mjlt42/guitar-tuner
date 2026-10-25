@@ -2,6 +2,8 @@
 Repository used to store the files for our ECE 3301 Project
 
 ## File Tree
+<!-- FILETREE:START -->
+```text
 guitar-tuner/
 ├── .gitignore
 ├── README.md
@@ -26,3 +28,5 @@ guitar-tuner/
 │       └── tuner_control.c
 └── Schematics/
     └── README.md
+```
+<!-- FILETREE:END -->
