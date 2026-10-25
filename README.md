@@ -28,3 +28,8 @@ Repository used to store the files for our ECE 3301 Project
 └── Schematics/
 ```
 <!-- FILETREE:END -->
+
+## Schematics
+![alt text](Schematics/LCD_Schematic.png)
+![alt text](Schematics/LCD_Schematic.png)
+![alt text](Schematics/Audio_Amplifier_Schematic.png)
