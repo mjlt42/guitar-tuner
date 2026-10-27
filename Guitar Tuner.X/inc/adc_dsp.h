@@ -1,9 +1,12 @@
 #ifndef ADC_DSP_H
 #define ADC_DSP_H
 
-#define VREF 5.0f
-#define ADC_MAX 1023.0f
 
+static void ADC_init();
+static uint16_t ADC_read();
+static uint16_t* ADC_Sample();
 static void DigitalToVoltage(uint16_t adcSampleSet[], uint8_t size);
+
+
 
 #endif
