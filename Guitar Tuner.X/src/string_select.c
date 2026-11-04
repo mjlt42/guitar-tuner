@@ -10,7 +10,7 @@
 #include <stdint.h>
 #include "string_select.h"
 
-static void String_init(void){
+static void String_init(){
     
     //Button initialization 
     TRISBbits.TRISB0 = 0x01;

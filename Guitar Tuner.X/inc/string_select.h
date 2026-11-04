@@ -19,7 +19,7 @@ typedef enum {
     PREV
 } Direction;
 
-static void String_init(void);
+static void String_init();
 static String change_state(Direction direction);
 
 #endif

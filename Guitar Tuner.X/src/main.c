@@ -36,6 +36,7 @@ void main(void)
     // Initialize the LCD
     init();
     //String_init();
+    ADC_init;
     LCD_init();
 
     while (1)
