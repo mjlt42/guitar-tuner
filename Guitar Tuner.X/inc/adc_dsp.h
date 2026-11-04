@@ -4,7 +4,7 @@
 #define _XTAL_FREQ 16000000  //Frequency of the system clock (16 MHz HFINTOSC)
 
 
-static void ADC_init();
+void ADC_init(void);
 static uint16_t ADC_read();
 static uint16_t* ADC_Sample();
 static void DigitalToVoltage(uint16_t adcSampleSet[], uint8_t size);

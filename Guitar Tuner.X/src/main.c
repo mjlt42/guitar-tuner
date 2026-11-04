@@ -28,15 +28,10 @@ static void init(void){
 
 void main(void)
 {
-   
-    // Configure LCD data pins as digital
-    ANSELA = 0x00;
-    ANSELD = 0x00;
-
-    // Initialize the LCD
+    //Initialization functions
     init();
-    //String_init();
-    ADC_init;
+    String_init();
+    ADC_init();
     LCD_init();
 
     while (1)

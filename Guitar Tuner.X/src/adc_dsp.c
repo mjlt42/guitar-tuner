@@ -6,16 +6,16 @@
  */
 
 #include <xc.h>
-#include "adc_dsp.h"
 #include <stdio.h>
 #include <stdint.h>
-#include <pic18f46k22.h>
+#include "adc_dsp.h"
+
 
 #define VREF 5.0f
 #define ADC_MAX 1023.0f
 #define SAMPLE_SIZE 256
 
-static void ADC_init() {
+void ADC_init(void) {
 
     TRISAbits.TRISA0 = 1; // Set RA0 as input
     ANSELAbits.ANSA0 = 1; // Set RA0 to analog    
