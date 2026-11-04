@@ -5,21 +5,37 @@
  */
 
 #include <xc.h>
+#include "adc_dsp.h"
 #include "Configuration.h"
-#include "LCD.h"
 #include "display.h"
+#include "LCD.h"
+#include "string_select.h"
+#include "tuner_control.h"
+
+
+#define PREV_PORT PORTBbits.RB1 
+#define NEXT_PORT PORTBbits.RB0 
+#define _XTAL_FREQ 64000000 
+//TODO: 
+static void init(void){
+    // 16 MHz HFINTOSC with 4x PLL
+    OSCCON &= ~(0x7 << 4);
+    OSCCON |= (0x7 << 4);
+    
+    OSCCON &= ~(0x1 << 1);
+    OSCCON |= (0x1 << 1);
+}
 
 void main(void)
 {
-    // Set internal oscillator to 16 MHz
-    OSCCONbits.IRCF = 0b111;
-    OSCCONbits.SCS = 0b10;
-
+   
     // Configure LCD data pins as digital
     ANSELA = 0x00;
     ANSELD = 0x00;
 
     // Initialize the LCD
+    init();
+    //String_init();
     LCD_init();
 
     while (1)

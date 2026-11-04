@@ -1,6 +1,8 @@
 #ifndef ADC_DSP_H
 #define ADC_DSP_H
 
+#define _XTAL_FREQ 16000000  //Frequency of the system clock (16 MHz HFINTOSC)
+
 
 static void ADC_init();
 static uint16_t ADC_read();

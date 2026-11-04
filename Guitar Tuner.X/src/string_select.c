@@ -8,32 +8,17 @@
 //check
 #include <xc.h>
 #include <stdint.h>
+#include "string_select.h"
 
-static void init(void){
-    // 16 MHz HFINTOSC with 4x PLL
-    OSCCON |= (0x7 << 4); //sets IRCF<2:0> to HFINTOSC (16 MHz)
-    OSCCON |= (0x1 << 1); //selects internal oscillator block
+static void String_init(void){
     
-    ANSELD = 0x00;              // PORTD digital
-    TRISD = 0xC0;               // RD7 and RD6 inputs; RD0-RD5 outputs
-    LATD  = 0x00;               // Clear output latches
+    //Button initialization 
+    TRISBbits.TRISB0 = 0x01;
+    ANSELBbits.ANSB0 = 0x00;
+    
+    TRISBbits.TRISB1 = 0x01;
+    ANSELBbits.ANSB1 = 0x00;
 }
-
-typedef enum {
-    ELow,
-    A,
-    D,
-    G,
-    B,
-    EHigh
-} String;
-
-typedef enum {
-    NEXT,
-    PREV
-} Direction;
-
-#define NUM_STATES 6
 
 static String change_state(Direction direction){
     static String current = ELow;
@@ -50,7 +35,7 @@ static String change_state(Direction direction){
     return current;
 }
 
-
+/*
 void main(void){
     init();
 
@@ -65,4 +50,4 @@ void main(void){
             change_state(&state, PREV);
         }
     }
-}
+}*/

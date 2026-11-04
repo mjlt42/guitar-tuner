@@ -2,6 +2,7 @@
 #include "LCD.h"
 #include <math.h>
 
+
 #define LCD_BUSY_DELAY           60                    //Minimum delay required by short commands[uS]
 #define LCD_BUSY_DELAY_EXTENDED (2300-LCD_BUSY_DELAY)  //Extra delay required by the longer commands[uS]
 
