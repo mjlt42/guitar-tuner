@@ -107,6 +107,13 @@ void LCD_write_data(char data){
 void LCD_init(){
     
     //---------- Pin configurations ----------
+    //ANSELA = 0x00;
+    //ANSELD = 0x00;
+    
+    //Sets RA5, RD0, RD2 as digital (RA4 is only digital)
+    ANSELAbits.ANSA5 = 0;
+    ANSELDbits.ANSD0 = 0;
+    ANSELDbits.ANSD2 = 0;
     LCD_RS_TRIS = 0; LCD_RS_LAT = 0;
     LCD_EN_TRIS = 0; LCD_EN_LAT = 0;
     LCD_D4_TRIS = 0; LCD_D4_LAT = 0;
