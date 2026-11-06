@@ -15,7 +15,7 @@
 
 #define PREV_PORT PORTBbits.RB1 
 #define NEXT_PORT PORTBbits.RB0 
-#define _XTAL_FREQ 64000000 
+//#define _XTAL_FREQ 64000000 
 //TODO: 
 static void init(void){
     // 16 MHz HFINTOSC with 4x PLL
@@ -33,7 +33,8 @@ void main(void)
     String_init();
     ADC_init();
     LCD_init();
-
+    
+    /*
     while (1)
     {
         // Low E string, correctly tuned
@@ -50,5 +51,5 @@ void main(void)
         Display_Update(2, 2);
 
         __delay_ms(1000);
-    }
+    }*/
 }
