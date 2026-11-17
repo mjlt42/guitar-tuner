@@ -51,5 +51,13 @@ void main(void)
         Display_Update(2, 2);
 
         __delay_ms(1000);
+     * 
+     if (PORTBbits.RB0 == 0){
+            state = change_state(state, NEXT);
+        }
+        else if (PORTBbits.RB1 == 0){
+            state = change_state(state, PREV);
+        }
     }*/
+     
 }
