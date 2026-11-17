@@ -14,9 +14,9 @@ static void init(void){
     OSCCON |= (0x7 << 4); //sets IRCF<2:0> to HFINTOSC (16 MHz)
     OSCCON |= (0x1 << 1); //selects internal oscillator block
     
-    ANSELD = 0x00;              // PORTD digital
-    TRISD = 0x03;               // RD7 and RD6 inputs; RD0-RD5 outputs
-    LATD  = 0x00;               // Clear output latches
+    ANSELB = 0x00;              // PORTD digital
+    TRISB = 0x03;               // RB0 and RB1 inputs;
+    LATB  = 0x03;               // Clear latches
 }
 
 typedef enum {
@@ -56,10 +56,10 @@ void main(void){
 
     while (1)
     {
-        if (PORTDbits.RD0 == 0){
+        if (PORTBbits.RB0 == 0){
             state = change_state(state, NEXT);
         }
-        else if (PORTDbits.RD1 == 0){
+        else if (PORTBbits.RB1 == 0){
             state = change_state(state, PREV);
         }
     }
