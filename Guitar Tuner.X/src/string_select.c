@@ -11,6 +11,8 @@
 #include <stdint.h>
 #include "string_select.h"
 
+#define _XTAL_FREQ 16000000 
+
 void String_init(void){
     
     //Button initialization 

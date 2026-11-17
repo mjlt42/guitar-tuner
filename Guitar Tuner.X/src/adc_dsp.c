@@ -10,7 +10,7 @@
 #include <stdint.h>
 #include "adc_dsp.h"
 
-
+#define _XTAL_FREQ 16000000 
 #define VREF 5.0f
 #define ADC_MAX 1023.0f
 #define SAMPLE_SIZE 256
@@ -44,10 +44,11 @@ static uint16_t ADC_read() {
     return adcReading;
 }
 
-static uint16_t* ADC_Sample(){
-    static uint16_t adcTempSet[SAMPLE_SIZE];
+static ComplexNumber* ADC_Sample() {
+    static ComplexNumber adcTempSet[SAMPLE_SIZE];
     for (int i = 0; i < SAMPLE_SIZE; i++) {
-        adcTempSet[i] = ADC_read();
+        adcTempSet[i].real = ((int16_t)ADC_read() - 512) * 16; //Need to scale for Q15 storing
+        adcTempSet[i].imag = 0;
         __delay_us(100);
     }
     return adcTempSet;
@@ -56,6 +57,6 @@ static uint16_t* ADC_Sample(){
 
 static void DigitalToVoltage(uint16_t adcSampleSet[], uint8_t size) {
     for (int i = 0; i < size; i++) {
-        adcSampleSet[i] = (uint16_t) (((float) adcSampleSet[i] / ADC_MAX) * VREF);
+        adcSampleSet[i] = (uint16_t) (((float) adcSampleSet[i]   / ADC_MAX) * VREF);
     }
 }

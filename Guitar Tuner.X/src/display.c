@@ -9,6 +9,8 @@
 #include <stdint.h>
 #include "LCD.h"
 
+#define _XTAL_FREQ 16000000 
+
 // Tuning status:
 // 0 = Flat
 // 1 = In Tune

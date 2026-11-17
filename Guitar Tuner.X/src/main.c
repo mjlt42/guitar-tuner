@@ -11,14 +11,14 @@
 #include "LCD.h"
 #include "string_select.h"
 #include "tuner_control.h"
+#define _XTAL_FREQ 16000000 
 
 
 #define PREV_PORT PORTBbits.RB1 
 #define NEXT_PORT PORTBbits.RB0 
-//#define _XTAL_FREQ 64000000 
 //TODO: 
 static void init(void){
-    // 16 MHz HFINTOSC with 4x PLL
+    // 16 MHz HFINTOSC
     OSCCON &= ~(0x7 << 4);
     OSCCON |= (0x7 << 4);
     
