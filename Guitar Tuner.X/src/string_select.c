@@ -7,13 +7,15 @@
 
 //check
 #include <xc.h>
+#include <stdio.h>
 #include <stdint.h>
+#include "string_select.h"
 
-static void init(void){
-    // 16 MHz HFINTOSC with 4x PLL
-    OSCCON |= (0x7 << 4); //sets IRCF<2:0> to HFINTOSC (16 MHz)
-    OSCCON |= (0x1 << 1); //selects internal oscillator block
+#define _XTAL_FREQ 16000000 
+
+void String_init(void){
     
+<<<<<<< HEAD
     ANSELB = 0x00;              // PORTD digital
     TRISB = 0x03;               // RB0 and RB1 inputs;
     LATB  = 0x03;               // Clear latches
@@ -38,21 +40,42 @@ typedef enum {
 static TrafficState change_state(TrafficState current, Direction direction){
     if (direction == NEXT){
         return (TrafficState)((current + 1) % NUM_STATES);
+=======
+    //Button initialization 
+    TRISBbits.TRISB0 = 0x01;
+    ANSELBbits.ANSB0 = 0x00;
+    
+    TRISBbits.TRISB1 = 0x01;
+    ANSELBbits.ANSB1 = 0x00;
+}
+
+static String change_state(Direction direction){
+    static String current = ELow;
+    if (direction == NEXT){
+        current = (String)((current + 1) % NUM_STATES);
+>>>>>>> e3a8aeed8f13adcdf6d1ed9c6f15b801858c5b7a
     }
     else if (direction == PREV)
     {
         if (current == ELow)
+<<<<<<< HEAD
             return EHigh;
         else
             return (TrafficState)(current - 1);
+=======
+            current = EHigh;
+        else
+            current = (String)(current - 1);
+>>>>>>> e3a8aeed8f13adcdf6d1ed9c6f15b801858c5b7a
     }
+    return current;
 }
 
-
+/*
 void main(void){
     init();
 
-    TrafficState state = ELow;
+    String state = ELow;
 
     while (1)
     {
@@ -63,4 +86,4 @@ void main(void){
             state = change_state(state, PREV);
         }
     }
-}
+}*/

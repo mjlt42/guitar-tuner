@@ -20,6 +20,6 @@ typedef enum {
 } Direction;
 
 void String_init(void);
-static String change_state(Direction direction);
+String change_state(Direction direction);
 
 #endif
