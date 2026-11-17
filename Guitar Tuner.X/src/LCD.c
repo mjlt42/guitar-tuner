@@ -2,6 +2,7 @@
 #include "LCD.h"
 #include <math.h>
 
+
 #define LCD_BUSY_DELAY           60                    //Minimum delay required by short commands[uS]
 #define LCD_BUSY_DELAY_EXTENDED (2300-LCD_BUSY_DELAY)  //Extra delay required by the longer commands[uS]
 
@@ -106,6 +107,13 @@ void LCD_write_data(char data){
 void LCD_init(){
     
     //---------- Pin configurations ----------
+    //ANSELA = 0x00;
+    //ANSELD = 0x00;
+    
+    //Sets RA5, RD0, RD2 as digital (RA4 is only digital)
+    ANSELAbits.ANSA5 = 0;
+    ANSELDbits.ANSD0 = 0;
+    ANSELDbits.ANSD2 = 0;
     LCD_RS_TRIS = 0; LCD_RS_LAT = 0;
     LCD_EN_TRIS = 0; LCD_EN_LAT = 0;
     LCD_D4_TRIS = 0; LCD_D4_LAT = 0;
@@ -418,8 +426,7 @@ void LCD_write_variable(int32_t variable, uint8_t left_offset){
         for(uint8_t i = 1 ; i < digits ; i++){       //Shift the temporary variable *digits* times
             temp_variable /= 10;                     //...
         }                                            //...
-        LCD_write_data( (temp_variable%10) + '0' );  //Write the digit(with character 0 as offset)
-        digits --;                                   //Decrement the *digits*(to move onto next)
+LCD_write_data((char)((temp_variable % 10) + '0'));        digits --;                                   //Decrement the *digits*(to move onto next)
         if(digits == 0) break;                       //If *digits* reaches 0, break
     }
 }

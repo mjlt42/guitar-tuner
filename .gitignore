@@ -31,3 +31,4 @@ Thumbs.db
 
 # CI reports (artifacts, never committed)
 ci-report-*.json
+/cmake
