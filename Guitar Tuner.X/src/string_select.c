@@ -13,8 +13,7 @@
 
 #define _XTAL_FREQ 16000000UL
 
-void String_init(void)
-{
+void String_init(void){
     ANSELBbits.ANSB0 = 0;
     ANSELBbits.ANSB1 = 0;
 
@@ -22,9 +21,7 @@ void String_init(void)
     TRISBbits.TRISB1 = 1;
 }
 
-String change_state(Direction direction)
-{
-    static String current = ELow;
+String change_state(String current, Direction direction){
 
     if (direction == NEXT)
     {
