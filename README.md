@@ -8,6 +8,8 @@ Repository used to store the files for our ECE 3301 Project
 ├── .gitignore
 ├── Guitar Tuner.X/
 │   ├── Makefile
+│   ├── defmplabxtrace.log
+│   ├── defmplabxtrace.log.inx
 │   ├── inc/
 │   │   ├── Configuration.h
 │   │   ├── LCD.h
