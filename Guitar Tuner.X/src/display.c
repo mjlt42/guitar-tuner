@@ -5,48 +5,63 @@
  * Description: Guitar tuner LCD display firmware
  */
 
-#include <xc.h>
 #include <stdint.h>
+#include "display.h"
 #include "LCD.h"
-
-#define _XTAL_FREQ 16000000 
-
-// Tuning status:
-// 0 = Flat
-// 1 = In Tune
-// 2 = Sharp
-// 3 = No Signal
 
 void Display_Update(uint8_t string, uint8_t status, uint32_t frequency_hz)
 {
-    (void)string;
+    LCD_clear();
 
-    // Row 1: tuning status
+    // Row 1: selected string and tuning status
     LCD_cursor_set(1, 1);
+
+    switch (string)
+    {
+        case 0:
+            LCD_write_string("LOW E");
+            break;
+        case 1:
+            LCD_write_string("A");
+            break;
+        case 2:
+            LCD_write_string("D");
+            break;
+        case 3:
+            LCD_write_string("G");
+            break;
+        case 4:
+            LCD_write_string("B");
+            break;
+        case 5:
+            LCD_write_string("HIGH E");
+            break;
+        default:
+            LCD_write_string("?");
+            break;
+    }
+
+    LCD_write_string(" - ");
 
     switch (status)
     {
         case 0:
-            LCD_write_string("STATUS: FLAT    ");
+            LCD_write_string("FLAT");
             break;
-
         case 1:
-            LCD_write_string("STATUS: IN TUNE ");
+            LCD_write_string("TUNED");
             break;
-
         case 2:
-            LCD_write_string("STATUS: SHARP   ");
+            LCD_write_string("SHARP");
             break;
-
         default:
-            LCD_write_string("STATUS: NO SIG  ");
+            LCD_write_string("NO SIG");
             break;
     }
 
     // Row 2: measured frequency
     LCD_cursor_set(2, 1);
-    LCD_write_string("FREQ:           ");
-    LCD_cursor_set(2, 7);
+    LCD_write_string("FREQ: ");
 
     if (status <= 2)
     {
