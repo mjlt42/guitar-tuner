@@ -6,11 +6,6 @@
  */
 #include <xc.h>
 #include "tuner_control.h"
-#define ADC_MAX 1023.0f
-#define SAMPLE_RATE 7800.0f //Calculated via ADC setup and other factors
-#define SAMPLE_RATE 1 //TO-DO replace with actual value
-#define TWIDDLE_SIZE (SAMPLE_SIZE/2)
-#define _XTAL_FREQ 16000000 
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wsign-conversion"

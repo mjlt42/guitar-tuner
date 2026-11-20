@@ -4,7 +4,7 @@
 #include <stdint.h>
 #define ADC_MAX 1023.0f
 #define SAMPLE_SIZE 256
-#define SAMPLE_RATE 1 //TO-DO replace with actual value
+#define SAMPLE_RATE 7800.0f //TO-DO replace with actual value
 #define TWIDDLE_SIZE (SAMPLE_SIZE/2)
 #define _XTAL_FREQ 16000000 
 
