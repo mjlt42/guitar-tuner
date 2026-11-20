@@ -56,20 +56,16 @@ void main(void) {
                 LCD_cursor_set(1, 1);
                 LCD_write_string("ELow");
                 if ((65 < (int32_t) freq) && ((int32_t) freq < 104)) {
-                    LCD_cursor_set(2, 1);
-                    LCD_write_string("Frequency: ");
-                    LCD_write_variable((int32_t) freq, 0);
-                    LCD_write_string(" Hz");
                     if ((int32_t) freq < 80) {
                         Display_Update(1, 0);
 
                         __delay_ms(1000);
                     } else if ((int32_t) freq > 84) {
-                        Display_Update(2, 2);
+                        Display_Update(0, 2, freq);
 
                         __delay_ms(1000);
                     } else {
-                        Display_Update(0, 1);
+                        Display_Update(0, 1, freq);
 
                         __delay_ms(1000);
                     }
@@ -77,8 +73,8 @@ void main(void) {
                     freq = freq / 2;
                 } else {
                     LCD_cursor_set(2, 1);
-                    //LCD_write_string("NA");
-                    LCD_write_variable((int32_t) freq, 0);
+                    Display_Update(0, 4, freq);
+                    
                 }
                 break;
 
@@ -87,20 +83,16 @@ void main(void) {
                 LCD_cursor_set(1, 1);
                 LCD_write_string("A");
                 if ((87 < (int32_t) freq) && ((int32_t) freq < 139)) {
-                    LCD_cursor_set(2, 1);
-                    LCD_write_string("Frequency: ");
-                    LCD_write_variable((int32_t) freq, 0);
-                    LCD_write_string(" Hz");
                     if ((int32_t) freq < 108) {
-                        Display_Update(1, 0);
+                        Display_Update(1, 0, freq);
 
                         __delay_ms(1000);
                     } else if ((int32_t) freq > 112) {
-                        Display_Update(2, 2);
+                        Display_Update(1, 2, freq);
 
                         __delay_ms(1000);
                     } else {
-                        Display_Update(0, 1);
+                        Display_Update(1, 1, freq);
 
                         __delay_ms(1000);
                     }
@@ -109,7 +101,7 @@ void main(void) {
                 } else {
                     LCD_cursor_set(2, 1);
                     //LCD_write_string("NA");
-                    LCD_write_variable((int32_t) freq, 0);
+                    Display_Update(1, 4, freq);
                 }
                 break;
 
@@ -118,20 +110,16 @@ void main(void) {
                 LCD_cursor_set(1, 1);
                 LCD_write_string("D");
                 if ((116 < (int32_t) freq) && ((int32_t) freq < 185)) {
-                    LCD_cursor_set(2, 1);
-                    LCD_write_string("Frequency: ");
-                    LCD_write_variable((int32_t) freq, 0);
-                    LCD_write_string(" Hz");
                     if ((int32_t) freq < 144) {
-                        Display_Update(1, 0);
+                        Display_Update(2, 0, (int32_t) freq);
 
                         __delay_ms(1000);
                     } else if ((int32_t) freq > 148) {
-                        Display_Update(2, 2);
+                        Display_Update(2, 2, (int32_t) freq);
 
                         __delay_ms(1000);
                     } else {
-                        Display_Update(0, 1);
+                        Display_Update(2, 1, freq);
 
                         __delay_ms(1000);
                     }
@@ -140,7 +128,7 @@ void main(void) {
                 } else {
                     LCD_cursor_set(2, 1);
                     //LCD_write_string("NA");
-                    LCD_write_variable((int32_t) freq, 0);
+                    Display_Update(2, 4, freq);
                 }
                 break;
             case G:
@@ -148,20 +136,16 @@ void main(void) {
                 LCD_cursor_set(1, 1);
                 LCD_write_string("G");
                 if ((156 < (int32_t) freq) && ((int32_t) freq < 247)) {
-                    LCD_cursor_set(2, 1);
-                    LCD_write_string("Frequency: ");
-                    LCD_write_variable((int32_t) freq, 0);
-                    LCD_write_string(" Hz");
                     if ((int32_t) freq < 194) {
-                        Display_Update(1, 0);
+                        Display_Update(3, 0, freq);
 
                         __delay_ms(1000);
                     } else if ((int32_t) freq > 198) {
-                        Display_Update(2, 2);
+                        Display_Update(3, 2, freq);
 
                         __delay_ms(1000);
                     } else {
-                        Display_Update(0, 1);
+                        Display_Update(3, 1, freq);
 
                         __delay_ms(1000);
                     }
@@ -170,7 +154,7 @@ void main(void) {
                 } else {
                     LCD_cursor_set(2, 1);
                     //LCD_write_string("NA");
-                    LCD_write_variable((int32_t) freq, 0);
+                    Display_Update(3, 4, freq);
                 }
                 break;
             case B:
@@ -178,20 +162,16 @@ void main(void) {
                 LCD_cursor_set(1, 1);
                 LCD_write_string("B");
                 if ((196 < (int32_t) freq) && ((int32_t) freq < 311)) {
-                    LCD_cursor_set(2, 1);
-                    LCD_write_string("Frequency: ");
-                    LCD_write_variable((int32_t) freq, 0);
-                    LCD_write_string(" Hz");
                     if ((int32_t) freq < 245) {
-                        Display_Update(1, 0);
+                        Display_Update(4, 0, freq);
 
                         __delay_ms(1000);
                     } else if ((int32_t) freq > 249) {
-                        Display_Update(2, 2);
+                        Display_Update(4, 2, freq);
 
                         __delay_ms(1000);
                     } else {
-                        Display_Update(0, 1);
+                        Display_Update(4, 1, freq);
 
                         __delay_ms(1000);
                     }
@@ -200,7 +180,7 @@ void main(void) {
                 } else {
                     LCD_cursor_set(2, 1);
                     //LCD_write_string("NA");
-                    LCD_write_variable((int32_t) freq, 0);
+                    Display_Update(4, 4, freq);
                 }
                 break;
             case EHigh:
@@ -208,29 +188,26 @@ void main(void) {
                 LCD_cursor_set(1, 1);
                 LCD_write_string("EHigh");
                 if ((262 < (int32_t) freq) && ((int32_t) freq < 415)) {
-                    LCD_cursor_set(2, 1);
-                    LCD_write_string("Frequency: ");
-                    LCD_write_variable((int32_t) freq, 0);
-                    LCD_write_string(" Hz");}
-                    /*if ((int32_t) freq < 328) {
-                        Display_Update(1, 0);
+                    //LCD_cursor_set(2, 1);
+                    if ((int32_t) freq < 328) {
+                        Display_Update(5, 0, freq );
 
                         __delay_ms(1000);
                     } else if ((int32_t) freq > 332) {
-                        Display_Update(2, 2);
+                        Display_Update(5, 2, freq);
 
                         __delay_ms(1000);
                     } else {
-                        Display_Update(0, 1);
+                        Display_Update(5, 1, freq);
 
                         __delay_ms(1000);
                     }
                 } else if ((int32_t) freq > 415) {
                     freq = freq / 2;
-                }*/ else {
-                    LCD_cursor_set(2, 1);
+                } else {
+                    //LCD_cursor_set(2, 1);
                     //LCD_write_string("NA");
-                    LCD_write_variable((int32_t) freq, 0);
+                    Display_Update(5, 4, freq);
                 }
                 break;
         }
@@ -245,20 +222,3 @@ void main(void) {
         __delay_ms(100);
     }
 }
-/*
- // Low E string, correctly tuned
-    Display_Update(0, 1);
-
-    __delay_ms(1000);
-
-    // A string, too low
-    Display_Update(1, 0);
-
-    __delay_ms(1000);
-
-    // D string, too high
-    Display_Update(2, 2);
-
-    __delay_ms(1000);
-     
- */
