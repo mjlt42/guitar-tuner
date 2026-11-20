@@ -28,7 +28,7 @@ void ADC_init(void) {
 
     ADCON2bits.ADFM = 1; // Right-justified
     ADCON2bits.ACQT = 0b100; // 8 TAD acquisition time
-    ADCON2bits.ADCS = 0b010; // FOSC/32 clock source
+    ADCON2bits.ADCS = 0b101; // FOSC/16 clock source
 
     ADCON0bits.ADON = 1; //Start ADC
 }
@@ -44,7 +44,7 @@ static uint16_t ADC_read() {
     return adcReading;
 }
 
-static ComplexNumber* ADC_Sample() {
+ComplexNumber* ADC_Sample() {
     static ComplexNumber adcTempSet[SAMPLE_SIZE];
     for (int i = 0; i < SAMPLE_SIZE; i++) {
         adcTempSet[i].real = ((int16_t)ADC_read() - 512) * 16; //Need to scale for Q15 storing

@@ -6,9 +6,7 @@
 
 void ADC_init(void);
 static uint16_t ADC_read();
-static ComplexNumber* ADC_Sample();
+ComplexNumber* ADC_Sample();
 static void DigitalToVoltage(uint16_t adcSampleSet[], uint8_t size);
-
-
 
 #endif

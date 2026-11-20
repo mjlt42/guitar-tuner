@@ -1,4 +1,4 @@
-# MPLAB X build artifacts — never commit these
+# MPLAB X build artifacts
 **/build/
 **/debug/
 **/dist/
@@ -25,10 +25,15 @@ l.obj
 *.lst
 *.rlf
 
+# MCC temporary and backup files
+*.mc3.bak
+*.bak
+**/mcc-manifest-autosave.yml
+
 # OS noise
 .DS_Store
 Thumbs.db
 
-# CI reports (artifacts, never committed)
+# CI reports 
 ci-report-*.json
 /cmake
