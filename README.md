@@ -39,5 +39,5 @@ Repository used to store the files for our ECE 3301 Project
 ![Schematic of LCD Setup](images/LCD_Schematic.png)
 ![Schematic of Audio Amplifier](images/Audio_Amplifier_Schematic.png)
 ![FFT Scope Screenshot #1](images/FFT_scope_1.png)
-![FFT Scope Screenshot #2](images/FFT_scope_2.pngg)
+![FFT Scope Screenshot #2](images/FFT_scope_2.png)
 ![FFT Scope Screenshot #3](images/FFT_scope_3.png)
