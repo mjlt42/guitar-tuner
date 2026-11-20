@@ -55,11 +55,11 @@ void main(void) {
                 LCD_clear();
                 LCD_cursor_set(1, 1);
                 if ((65 < (int32_t) freq) && ((int32_t) freq < 104)) {
-                    if ((int32_t) freq < 80) {
+                    if ((int32_t) freq < 78) {
                         Display_Update(0, 0, freq);
 
                         __delay_ms(1000);
-                    } else if ((int32_t) freq > 84) {
+                    } else if ((int32_t) freq > 86) {
                         Display_Update(0, 2, freq);
 
                         __delay_ms(1000);
@@ -70,11 +70,11 @@ void main(void) {
                     }
                 } else if ((int32_t) freq > 104) {
                     freq = freq / 2;
-                    if ((int32_t) freq < 80) {
+                    if ((int32_t) freq < 78) {
                         Display_Update(0, 0, freq);
 
                         __delay_ms(1000);
-                    } else if ((int32_t) freq > 84) {
+                    } else if ((int32_t) freq > 86) {
                         Display_Update(0, 2, freq);
 
                         __delay_ms(1000);
@@ -84,7 +84,6 @@ void main(void) {
                         __delay_ms(1000);
                     }
                 } else {
-                    LCD_cursor_set(2, 1);
                     Display_Update(0, 4, freq);
                     
                 }
@@ -94,11 +93,11 @@ void main(void) {
                 LCD_clear();
                 LCD_cursor_set(1, 1);
                 if ((87 < (int32_t) freq) && ((int32_t) freq < 139)) {
-                    if ((int32_t) freq < 108) {
+                    if ((int32_t) freq < 104) {
                         Display_Update(1, 0, freq);
 
                         __delay_ms(1000);
-                    } else if ((int32_t) freq > 112) {
+                    } else if ((int32_t) freq > 116) {
                         Display_Update(1, 2, freq);
 
                         __delay_ms(1000);
@@ -109,11 +108,11 @@ void main(void) {
                     }
                 } else if ((int32_t) freq > 139) {
                     freq = freq / 2;
-                    if ((int32_t) freq < 108) {
+                    if ((int32_t) freq < 104) {
                         Display_Update(1, 0, freq);
 
                         __delay_ms(1000);
-                    } else if ((int32_t) freq > 112) {
+                    } else if ((int32_t) freq > 116) {
                         Display_Update(1, 2, freq);
 
                         __delay_ms(1000);
@@ -121,11 +120,11 @@ void main(void) {
                         Display_Update(1, 1, freq);
 
                         __delay_ms(1000);
-                    }if ((int32_t) freq < 108) {
+                    }if ((int32_t) freq < 104) {
                         Display_Update(1, 0, freq);
 
                         __delay_ms(1000);
-                    } else if ((int32_t) freq > 112) {
+                    } else if ((int32_t) freq > 116) {
                         Display_Update(1, 2, freq);
 
                         __delay_ms(1000);
@@ -135,7 +134,6 @@ void main(void) {
                         __delay_ms(1000);
                     }
                 } else {
-                    LCD_cursor_set(2, 1);
                     Display_Update(1, 4, freq);
                 }
                 break;
@@ -144,11 +142,11 @@ void main(void) {
                 LCD_clear();
                 LCD_cursor_set(1, 1);
                 if ((116 < (int32_t) freq) && ((int32_t) freq < 185)) {
-                    if ((int32_t) freq < 144) {
+                    if ((int32_t) freq < 140) {
                         Display_Update(2, 0, freq);
 
                         __delay_ms(1000);
-                    } else if ((int32_t) freq > 148) {
+                    } else if ((int32_t) freq > 152) {
                         Display_Update(2, 2, freq);
 
                         __delay_ms(1000);
@@ -159,11 +157,11 @@ void main(void) {
                     }
                 } else if ((int32_t) freq > 185) {
                     freq = freq / 2;
-                    if ((int32_t) freq < 144) {
+                    if ((int32_t) freq < 140) {
                         Display_Update(2, 0, freq);
 
                         __delay_ms(1000);
-                    } else if ((int32_t) freq > 148) {
+                    } else if ((int32_t) freq > 152) {
                         Display_Update(2, 2, freq);
 
                         __delay_ms(1000);
@@ -173,7 +171,6 @@ void main(void) {
                         __delay_ms(1000);
                     }
                 } else {
-                    LCD_cursor_set(2, 1);
                     Display_Update(2, 4, freq);
                 }
                 break;
@@ -211,7 +208,6 @@ void main(void) {
                         __delay_ms(1000);
                     }
                 } else {
-                    LCD_cursor_set(2, 1);
                     Display_Update(3, 4, freq);
                 }
                 break;
@@ -219,11 +215,11 @@ void main(void) {
                 LCD_clear();
                 LCD_cursor_set(1, 1);
                 if ((196 < (int32_t) freq) && ((int32_t) freq < 311)) {
-                    if ((int32_t) freq < 245) {
+                    if ((int32_t) freq < 241) {
                         Display_Update(4, 0, freq);
 
                         __delay_ms(1000);
-                    } else if ((int32_t) freq > 249) {
+                    } else if ((int32_t) freq > 253) {
                         Display_Update(4, 2, freq);
 
                         __delay_ms(1000);
@@ -234,11 +230,11 @@ void main(void) {
                     }
                 } else if ((int32_t) freq > 311) {
                     freq = freq / 2;
-                    if ((int32_t) freq < 245) {
+                    if ((int32_t) freq < 241) {
                         Display_Update(4, 0, freq);
 
                         __delay_ms(1000);
-                    } else if ((int32_t) freq > 249) {
+                    } else if ((int32_t) freq > 253) {
                         Display_Update(4, 2, freq);
 
                         __delay_ms(1000);
@@ -248,7 +244,6 @@ void main(void) {
                         __delay_ms(1000);
                     }
                 } else {
-                    LCD_cursor_set(2, 1);
                     Display_Update(4, 4, freq);
                 }
                 break;
@@ -256,12 +251,11 @@ void main(void) {
                 LCD_clear();
                 LCD_cursor_set(1, 1);
                 if ((262 < (int32_t) freq) && ((int32_t) freq < 415)) {
-                    //LCD_cursor_set(2, 1);
-                    if ((int32_t) freq < 328) {
+                    if ((int32_t) freq < 324) {
                         Display_Update(5, 0, freq );
 
                         __delay_ms(1000);
-                    } else if ((int32_t) freq > 332) {
+                    } else if ((int32_t) freq > 336) {
                         Display_Update(5, 2, freq);
 
                         __delay_ms(1000);
@@ -272,11 +266,11 @@ void main(void) {
                     }
                 } else if ((int32_t) freq > 415) {
                     freq = freq / 2;
-                    if ((int32_t) freq < 328) {
+                    if ((int32_t) freq < 324) {
                         Display_Update(5, 0, freq );
 
                         __delay_ms(1000);
-                    } else if ((int32_t) freq > 332) {
+                    } else if ((int32_t) freq > 336) {
                         Display_Update(5, 2, freq);
 
                         __delay_ms(1000);
@@ -286,7 +280,6 @@ void main(void) {
                         __delay_ms(1000);
                     }
                 } else {
-                    //LCD_cursor_set(2, 1);
                     Display_Update(5, 4, freq);
                 }
                 break;
