@@ -35,7 +35,7 @@ void main(void) {
     ADC_init();
     LCD_init();
     LCD_clear();
-    String state = EHigh;
+    String state = D;
     while (1) {
 
         volatile static uint32_t freq;
@@ -49,15 +49,14 @@ void main(void) {
         peak_bin = FindPeakBin(samples);
 
         freq = ((uint32_t) peak_bin * SAMPLE_RATE) / (SAMPLE_SIZE*CALIB);
-        //freq = 5;
+        
         switch (state) {
             case ELow:
                 LCD_clear();
                 LCD_cursor_set(1, 1);
-                LCD_write_string("ELow");
                 if ((65 < (int32_t) freq) && ((int32_t) freq < 104)) {
                     if ((int32_t) freq < 80) {
-                        Display_Update(1, 0);
+                        Display_Update(0, 0, freq);
 
                         __delay_ms(1000);
                     } else if ((int32_t) freq > 84) {
@@ -71,6 +70,19 @@ void main(void) {
                     }
                 } else if ((int32_t) freq > 104) {
                     freq = freq / 2;
+                    if ((int32_t) freq < 80) {
+                        Display_Update(0, 0, freq);
+
+                        __delay_ms(1000);
+                    } else if ((int32_t) freq > 84) {
+                        Display_Update(0, 2, freq);
+
+                        __delay_ms(1000);
+                    } else {
+                        Display_Update(0, 1, freq);
+
+                        __delay_ms(1000);
+                    }
                 } else {
                     LCD_cursor_set(2, 1);
                     Display_Update(0, 4, freq);
@@ -81,7 +93,6 @@ void main(void) {
             case A:
                 LCD_clear();
                 LCD_cursor_set(1, 1);
-                LCD_write_string("A");
                 if ((87 < (int32_t) freq) && ((int32_t) freq < 139)) {
                     if ((int32_t) freq < 108) {
                         Display_Update(1, 0, freq);
@@ -98,9 +109,33 @@ void main(void) {
                     }
                 } else if ((int32_t) freq > 139) {
                     freq = freq / 2;
+                    if ((int32_t) freq < 108) {
+                        Display_Update(1, 0, freq);
+
+                        __delay_ms(1000);
+                    } else if ((int32_t) freq > 112) {
+                        Display_Update(1, 2, freq);
+
+                        __delay_ms(1000);
+                    } else {
+                        Display_Update(1, 1, freq);
+
+                        __delay_ms(1000);
+                    }if ((int32_t) freq < 108) {
+                        Display_Update(1, 0, freq);
+
+                        __delay_ms(1000);
+                    } else if ((int32_t) freq > 112) {
+                        Display_Update(1, 2, freq);
+
+                        __delay_ms(1000);
+                    } else {
+                        Display_Update(1, 1, freq);
+
+                        __delay_ms(1000);
+                    }
                 } else {
                     LCD_cursor_set(2, 1);
-                    //LCD_write_string("NA");
                     Display_Update(1, 4, freq);
                 }
                 break;
@@ -108,14 +143,13 @@ void main(void) {
             case D:
                 LCD_clear();
                 LCD_cursor_set(1, 1);
-                LCD_write_string("D");
                 if ((116 < (int32_t) freq) && ((int32_t) freq < 185)) {
                     if ((int32_t) freq < 144) {
-                        Display_Update(2, 0, (int32_t) freq);
+                        Display_Update(2, 0, freq);
 
                         __delay_ms(1000);
                     } else if ((int32_t) freq > 148) {
-                        Display_Update(2, 2, (int32_t) freq);
+                        Display_Update(2, 2, freq);
 
                         __delay_ms(1000);
                     } else {
@@ -125,22 +159,33 @@ void main(void) {
                     }
                 } else if ((int32_t) freq > 185) {
                     freq = freq / 2;
+                    if ((int32_t) freq < 144) {
+                        Display_Update(2, 0, freq);
+
+                        __delay_ms(1000);
+                    } else if ((int32_t) freq > 148) {
+                        Display_Update(2, 2, freq);
+
+                        __delay_ms(1000);
+                    } else {
+                        Display_Update(2, 1, freq);
+
+                        __delay_ms(1000);
+                    }
                 } else {
                     LCD_cursor_set(2, 1);
-                    //LCD_write_string("NA");
                     Display_Update(2, 4, freq);
                 }
                 break;
             case G:
                 LCD_clear();
                 LCD_cursor_set(1, 1);
-                LCD_write_string("G");
                 if ((156 < (int32_t) freq) && ((int32_t) freq < 247)) {
-                    if ((int32_t) freq < 194) {
+                    if ((int32_t) freq < 190) {
                         Display_Update(3, 0, freq);
 
                         __delay_ms(1000);
-                    } else if ((int32_t) freq > 198) {
+                    } else if ((int32_t) freq > 202) {
                         Display_Update(3, 2, freq);
 
                         __delay_ms(1000);
@@ -151,16 +196,28 @@ void main(void) {
                     }
                 } else if ((int32_t) freq > 247) {
                     freq = freq / 2;
+                    if ((156 < (int32_t) freq) && ((int32_t) freq < 247)) {
+                    if ((int32_t) freq < 190) {
+                        Display_Update(3, 0, freq);
+
+                        __delay_ms(1000);
+                    } else if ((int32_t) freq > 202) {
+                        Display_Update(3, 2, freq);
+
+                        __delay_ms(1000);
+                    } else {
+                        Display_Update(3, 1, freq);
+
+                        __delay_ms(1000);
+                    }
                 } else {
                     LCD_cursor_set(2, 1);
-                    //LCD_write_string("NA");
                     Display_Update(3, 4, freq);
                 }
                 break;
             case B:
                 LCD_clear();
                 LCD_cursor_set(1, 1);
-                LCD_write_string("B");
                 if ((196 < (int32_t) freq) && ((int32_t) freq < 311)) {
                     if ((int32_t) freq < 245) {
                         Display_Update(4, 0, freq);
@@ -177,16 +234,27 @@ void main(void) {
                     }
                 } else if ((int32_t) freq > 311) {
                     freq = freq / 2;
+                    if ((int32_t) freq < 245) {
+                        Display_Update(4, 0, freq);
+
+                        __delay_ms(1000);
+                    } else if ((int32_t) freq > 249) {
+                        Display_Update(4, 2, freq);
+
+                        __delay_ms(1000);
+                    } else {
+                        Display_Update(4, 1, freq);
+
+                        __delay_ms(1000);
+                    }
                 } else {
                     LCD_cursor_set(2, 1);
-                    //LCD_write_string("NA");
                     Display_Update(4, 4, freq);
                 }
                 break;
             case EHigh:
                 LCD_clear();
                 LCD_cursor_set(1, 1);
-                LCD_write_string("EHigh");
                 if ((262 < (int32_t) freq) && ((int32_t) freq < 415)) {
                     //LCD_cursor_set(2, 1);
                     if ((int32_t) freq < 328) {
@@ -204,9 +272,21 @@ void main(void) {
                     }
                 } else if ((int32_t) freq > 415) {
                     freq = freq / 2;
+                    if ((int32_t) freq < 328) {
+                        Display_Update(5, 0, freq );
+
+                        __delay_ms(1000);
+                    } else if ((int32_t) freq > 332) {
+                        Display_Update(5, 2, freq);
+
+                        __delay_ms(1000);
+                    } else {
+                        Display_Update(5, 1, freq);
+
+                        __delay_ms(1000);
+                    }
                 } else {
                     //LCD_cursor_set(2, 1);
-                    //LCD_write_string("NA");
                     Display_Update(5, 4, freq);
                 }
                 break;
@@ -221,4 +301,5 @@ void main(void) {
         }
         __delay_ms(100);
     }
+}
 }

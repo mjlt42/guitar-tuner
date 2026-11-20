@@ -62,8 +62,11 @@ void Display_Update(uint8_t string, uint8_t status, uint32_t frequency_hz)
     // Row 2: measured frequency
     LCD_cursor_set(2, 1);
     LCD_write_string("FREQ: ");
+    
+    LCD_write_variable((int32_t)frequency_hz, 0);
+        LCD_write_string(" Hz");
 
-    if (status <= 2)
+   /* if (status <= 2)
     {
         LCD_write_variable((int32_t)frequency_hz, 0);
         LCD_write_string(" Hz");
@@ -71,5 +74,5 @@ void Display_Update(uint8_t string, uint8_t status, uint32_t frequency_hz)
     else
     {
         LCD_write_string("-- Hz");
-    }
+    }*/
 }

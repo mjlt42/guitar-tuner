@@ -11,6 +11,6 @@
 // Status: 0=Flat, 1=In Tune,
 //         2=Sharp, 3=No Signal
 
-void Display_Update(uint8_t string, uint8_t status);
+void Display_Update(uint8_t string, uint8_t status, uint32_t frequency_hz);
 
 #endif
